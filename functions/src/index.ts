@@ -1,5 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+// @ts-ignore
 import { google } from "googleapis";
 import { UserData } from "./types/UserData";
 import { ConfigData } from "./types/ConfigData";

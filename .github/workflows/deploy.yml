@@ -1,0 +1,34 @@
+name: Publish Firebase functions
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy Firebase functions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: actions/cache@v1.1.0
+        with:
+          path: |
+            functions/node_modules
+          key: ${{ runner.os }}-node_modules
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: "14"
+      - name: Install packages
+        run: |
+          cd functions
+          npm i
+      - name: Deploy functions
+        uses: pizzafox/firebase-action@1.0.7
+        env:
+          PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        with:
+          args: deploy
