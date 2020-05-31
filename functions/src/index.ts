@@ -111,5 +111,5 @@ export const auth = functions.https.onRequest(async (req, res) => {
 });
 
 export const updateJob = functions.pubsub
-	.schedule("every 5 minutes")
+	.schedule("every 8 minutes")
 	.onRun(update);
