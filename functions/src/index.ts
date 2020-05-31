@@ -47,13 +47,12 @@ const update = async () => {
 
 	const newTitle = `This video has ${viewCount} views, I think?`;
 
+	video.snippet.title = newTitle;
+
 	const updateResult = await youtube.videos.update({
 		requestBody: {
 			id: video_id,
-			snippet: {
-				title: newTitle,
-				categoryId: video.snippet.categoryId,
-			},
+			snippet: video.snippet,
 		},
 		part: "snippet",
 	});
