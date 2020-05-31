@@ -45,7 +45,7 @@ const update = async () => {
 
 	const { viewCount } = video.statistics;
 
-	const newTitle = `I made a bot that knows that this video has ${viewCount} views!`;
+	const newTitle = `This video has ${viewCount} views, I think? | Coding Sidequest #1`;
 
 	const updateResult = await youtube.videos.update({
 		requestBody: {
